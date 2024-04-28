@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <title>Admins List</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #bcbcbc;
+        }
+    </style>
+</head>
+<body class="bg-black" >
+    <div class="text-white" >
+            <h1 class="font-bold text-5xl text-center pt-4 py-4">Admins List</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Email</th>
+                <th>Shift</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% admins.forEach(admin => { %>
+                <tr>
+                    <td><%= admin.name %></td>
+                    <td><%= admin.age %></td>
+                    <td><%= admin.email %></td>
+                    <td><%= admin.shift %></td>
+                    <td>
+                        <form method="POST" action="/superuser/adminDelete/<%= admin.id %>">
+                            <button class="bg-gray-300 rounded text-black w-24 " type="submit">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    </div>
+
+</body>
+</html>

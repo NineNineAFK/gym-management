@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Home</title>
+    <link rel="stylesheet" href="https://cdn.tailwindcss.com">
+    <style>
+        /* Custom Styles */
+        body {
+            background-color: #ffffff; /* Black */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #F3F4F6; /* White */
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .card {
+            background-color: #66696e; /* Dark Gray */
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); /* Dark shadow */
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: #FFFFFF; /* White */
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        button {
+            background-color: #a7a7a7; /* Green */
+            color: #FFFFFF; /* White */
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>Welcome to Admin Home</h1>
+        <ul>
+            <% users.forEach(user => { %>
+                <li>
+                    <strong><%= user.name %></strong> - <%= user.email %>
+                    <form action="/users/admin/userDelete/<%= user.id %>" method="POST" style="display: inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    <!-- Logout button -->
+    <form action="/users/admin/logout" method="POST">
+        <button type="submit">Logout</button>
+    </form>
+</div>
+
+</body>
+</html>
