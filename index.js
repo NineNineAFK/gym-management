@@ -509,4 +509,12 @@ app.post("/superuser/adminDelete/:id", async (req, res) => {
     }
 });
 
+
+
+app.get("/figmaFile", (req,res) => {
+    res.render("figmaFile"); 
+}); 
+
+
+
 app.listen(PORT)
